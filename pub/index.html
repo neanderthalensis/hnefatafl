@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+<head>
+<title>Hnefatafl</title>
+<link rel="stylesheet" type="text/css" href="./index.css" />
+<script src="/socket.io/socket.io.js"></script>
+<script src="./king.js"></script>
+<script src="./index.js"></script>
+<script src="./chat.js"></script>
+<script src="./menu.js"></script>
+
+</head>
+
+<body>
+
+<div id="topmenu">
+	<button>Play</button>
+	<button>Rules</button>
+	<button>About</button>
+	<button>Login</button>
+</div>
+
+
+<div id="mode_selection" class="fsmenu">
+	<button class="modebtn" onclick="onlineone()">Play Online</button>
+	<button class="modebtn" onclick="local()">Play Local</button>
+	<button class="modebtn" onclick="computer()">Play Against a Computer</button>
+</div>
+
+<div id="online_setup" class="fsmenu">
+	<label for="nickname">Please enter a name:</label>
+	<input type="text" id="nickname" class="bigimp">
+	<button class="modebtn" onclick="createroom()">Create Game</button>
+	
+	<button class="modebtn" onclick="joinroom()">Join Game</button>
+	<input type="text" id="code_entry" class="bigimp">
+	<button onclick="submitcode()" id="code_submit" class="modebtn">Lets GO!</button>
+</div>
+
+<div id="room_wait" class="fsmenu">
+	Please share this code with your opponent:
+	<span id="code"> </span>
+	
+</div>
+
+
+<div id = "board" class="left">
+	<canvas id = "play">Your browser does not support canvas</canvas>
+</div>
+<div class="right" id="playing_interface">
+	<div id="timer"></div>
+	<div id="chat">
+		<ul id="messages"></ul>
+   		<form id="form" action="">
+    		<input id="input" autocomplete="off" /><button>Send</button>
+    	</form>
+	</div>
+</div>
+
+
+</body>
+
+</html>

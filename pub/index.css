@@ -1,0 +1,113 @@
+body{
+	background-color: #4f4f4f;
+	margin:0;
+	font-family: Arial, sans-serif;
+}
+button{
+	cursor: pointer;
+}
+.left{
+	float: left;
+	width: 48%;
+}
+.right{
+	float: right;
+	width: 48%;
+}
+.modebtn{
+	text-align: center;
+	height: 50px;
+	width: 250px;
+	border-radius: 15px;
+	background-color: #d60a33;
+	border: none;
+	color: white;
+	font-size: 18px;
+}
+.modebtn:hover{
+	width: 265px;
+}
+.fsmenu{
+	height: 90vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 30px;
+	font-size: 18px;
+	color: white;
+}
+.bigimp{
+	height: 45px;
+	width: 245px;
+	border-radius: 15px;
+	border: none;
+	text-align: center;
+	font-size: 18px;
+
+}
+#play{
+	height: 80vmin;
+	width:80vmin;
+	float: right;
+	margin-top: 6vh;
+}
+#topmenu{
+	height: 8vh;
+	background-color: #676670;
+
+}
+#chat{
+	position:absolute;
+	float: left;
+	width: 80vmin;
+	height: 40vmin;
+	background-color: red;
+}
+#form {
+	padding: 0.25rem;
+	position: absolute;
+	width: 80vmin;
+	display: flex;
+	height: 3rem;
+	box-sizing: border-box;
+	bottom:0;
+}
+#input {
+	border: none;
+	padding: 0 1rem;
+	flex-grow: 1;
+	border-radius: 2rem;
+	margin: 0.25rem; }
+#timer{
+	background-color: blue;
+	width: 80vmin;
+	height: 40vmin;
+	margin-top: 6vh;
+}
+
+#online_setup{
+	display:none;
+}
+#code{
+	font-size: 28px;
+	color: white;
+	letter-spacing: 4px;
+}
+#code_entry{
+	display: none;
+}
+#board{
+	display: none;
+}
+#playing_interface{
+	display: none;
+}
+#code_submit{
+	display: none;
+}
+
+
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages > li { padding: 0.5rem 1rem; }
+
