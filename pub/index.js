@@ -300,7 +300,7 @@ async function move(pieces, places, canv, con,gsize, flip){
 
 	return new Promise((resolve, reject) =>{
 		var outer = {};
-		canv.addEventListener('mousedown', async (x) => {
+		canv.addEventListener('click', async (x) => {
 		var moveout = await new Promise((res, rej) => {
 
 		var out = {}
@@ -337,7 +337,7 @@ async function move(pieces, places, canv, con,gsize, flip){
 
 	}})
 
-		canv.addEventListener('mouseup', (z) => {
+		canv.addEventListener('click', (z) => {
 			if (who != 0 && ((flip == "b" && who == 1) || (flip == "a" && who > 1))){
 			mousePos = getmouse(canv, z);
 			newpos = getpos(gsize, mousePos, canv.width)
