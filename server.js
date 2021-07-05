@@ -154,7 +154,8 @@ io.on('connection', (socket) => {
   	});
 
   	socket.on('things', (code) => {
-  		socket.emit('things', !(rooms[code] == undefined))
+
+  		socket.emit('things', (!(rooms[code] == undefined) & rooms[code].sockets.length < 2))
 
   	});
   	socket.on('done', (code, pieces, pos, newpos, who) => {

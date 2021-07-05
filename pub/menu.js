@@ -105,7 +105,7 @@ async function submitcode(){
 				go(socket, 1)
 			}
 			else{
-				document.getElementById("code_error").textContent = "Sorry, could not find a game with this code."
+				document.getElementById("code_error").textContent = "Sorry, could not find a game with this code, or the game is already full"
 				document.getElementById("code_error").style.display = "block"
 			}
 		}

@@ -1,5 +1,6 @@
 function king(gsize, width, ctx, x, y, snap){
 	// #layer1
+	var adj = window.devicePixelRatio*5
 	ctx.resetTransform();
 	if (snap){
 		ctx.transform(((width/gsize)/68.18)*2.5, 0, 0, ((width/gsize)/68.18)*2.5, ((width/gsize)*x)-((width/gsize)/68.18)*17, (width/gsize)*y) //1 and 4 parameter scales based on cell size, 5 and 6 does the offset
@@ -17,7 +18,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(244, 244, 244)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.070004;
+	ctx.lineWidth = adj*0.070004;
 	ctx.lineCap = 'butt';
 	ctx.lineJoin = 'miter';
 	ctx.moveTo(34.561380, 242.420410);
@@ -36,7 +37,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(244, 244, 244)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.070004;
+	ctx.lineWidth = adj*0.070004;
 	ctx.moveTo(20.557182, -15.943607);
 	ctx.bezierCurveTo(23.651071, -15.943607, 26.159164, -13.222964, 26.159164, -9.866880);
 	ctx.bezierCurveTo(26.159164, -6.510797, 23.651071, -3.790154, 20.557182, -3.790154);
@@ -50,7 +51,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(244, 244, 244)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.008882;
+	ctx.lineWidth = adj*0.008882;
 	ctx.moveTo(10.953384, 25.137646);
 	ctx.bezierCurveTo(10.890284, 24.381996, 10.869284, 22.356716, 10.915784, 21.514226);
 	ctx.bezierCurveTo(11.080274, 18.532006, 11.645364, 16.114676, 12.632904, 14.168806);
@@ -79,7 +80,7 @@ function king(gsize, width, ctx, x, y, snap){
 // #path34392-7
 	ctx.beginPath();
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.074253;
+	ctx.lineWidth = adj*0.074253;
 	ctx.lineCap = 'butt';
 	ctx.lineJoin = 'miter';
 	ctx.moveTo(120.299230, 261.086810);
@@ -99,7 +100,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.001758;
+	ctx.lineWidth = adj*0.001758;
 	ctx.miterLimit = 4;
 	ctx.moveTo(15.564824, 7.330966);
 	ctx.bezierCurveTo(15.663224, 7.045966, 15.705034, 6.948256, 15.806864, 6.765666);
@@ -118,7 +119,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.001880;
+	ctx.lineWidth = adj*0.001880;
 	ctx.miterLimit = 4;
 	ctx.moveTo(16.324864, 5.656666);
 	ctx.bezierCurveTo(16.324864, 5.633966, 16.694514, 5.022216, 16.812294, 4.850026);
@@ -140,7 +141,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.001871;
+	ctx.lineWidth = adj*0.001871;
 	ctx.miterLimit = 4;
 	ctx.moveTo(20.271844, 8.687056);
 	ctx.lineTo(20.271844, 7.435556);
@@ -159,7 +160,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(14.253029, -25.132691);
 	ctx.bezierCurveTo(17.556674, -25.132691, 20.234807, -22.433303, 20.234807, -19.103439);
@@ -176,7 +177,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(17.884811, -9.656004);
 	ctx.bezierCurveTo(18.264992, -9.656004, 18.573190, -9.358433, 18.573190, -8.991362);
@@ -193,7 +194,7 @@ function king(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(23.510544, -9.798460);
 	ctx.bezierCurveTo(23.890725, -9.798460, 24.198923, -9.500889, 24.198923, -9.133818);
@@ -207,7 +208,7 @@ function king(gsize, width, ctx, x, y, snap){
 
 function pawna(gsize, width, ctx, x, y, snap){
 	// #layer1
-
+	var adj = window.devicePixelRatio*5
 	ctx.resetTransform();
 	if (snap){
 		ctx.transform(((width/gsize)/68.18)*2.5, 0, 0, ((width/gsize)/68.18)*2.5, ((width/gsize)*x)-((width/gsize)/68.18)*4, ((width/gsize)*y)-((width/gsize)/68.18)*3.7)
@@ -225,7 +226,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(244, 244, 244)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.070004;
+	ctx.lineWidth = adj*0.070004;
 	ctx.lineCap = 'butt';
 	ctx.lineJoin = 'miter';
 	ctx.moveTo(34.561380, 242.420410);
@@ -244,7 +245,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(244, 244, 244)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.070004;
+	ctx.lineWidth = adj*0.070004;
 	ctx.moveTo(15.240045, -17.462790);
 	ctx.bezierCurveTo(18.333934, -17.462790, 20.842027, -14.742147, 20.842027, -11.386064);
 	ctx.bezierCurveTo(20.842027, -8.029981, 18.333934, -5.309338, 15.240045, -5.309338);
@@ -258,7 +259,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(242, 244, 244)';
 	ctx.strokeStyle = 'rgb(244, 244, 244)';
-	ctx.lineWidth = 0.008882;
+	ctx.lineWidth = adj*0.008882;
 	ctx.moveTo(5.636244, 26.656825);
 	ctx.bezierCurveTo(5.573144, 25.901175, 5.552144, 23.875895, 5.598644, 23.033405);
 	ctx.bezierCurveTo(5.763134, 20.051186, 6.328224, 17.633856, 7.315764, 15.687986);
@@ -287,7 +288,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 // #path34392-7
 	ctx.beginPath();
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.074253;
+	ctx.lineWidth = adj*0.074253;
 	ctx.lineCap = 'butt';
 	ctx.lineJoin = 'miter';
 	ctx.moveTo(120.299230, 261.086810);
@@ -307,7 +308,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.001758;
+	ctx.lineWidth = adj*0.001758;
 	ctx.miterLimit = 4;
 	ctx.moveTo(10.247684, 8.850146);
 	ctx.bezierCurveTo(10.346084, 8.565146, 10.387894, 8.467436, 10.489724, 8.284846);
@@ -326,7 +327,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.002134;
+	ctx.lineWidth = adj*0.002134;
 	ctx.miterLimit = 4;
 	ctx.moveTo(10.686134, 7.699284);
 	ctx.bezierCurveTo(10.686134, 7.672163, 11.084840, 6.941297, 11.211877, 6.735579);
@@ -348,7 +349,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.002270;
+	ctx.lineWidth = adj*0.002270;
 	ctx.miterLimit = 4;
 	ctx.moveTo(14.821160, 10.206236);
 	ctx.lineTo(14.821160, 8.955097);
@@ -367,7 +368,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(12.567673, -11.175187);
 	ctx.bezierCurveTo(12.947854, -11.175187, 13.256052, -10.877617, 13.256052, -10.510545);
@@ -384,7 +385,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(18.193405, -11.317643);
 	ctx.bezierCurveTo(18.573586, -11.317643, 18.881784, -11.020073, 18.881784, -10.653001);
@@ -401,7 +402,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 	ctx.transform(0.264583, 0.000000, 0.000000, 0.264583, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(249, 249, 249)';
 	ctx.strokeStyle = 'rgb(249, 249, 249)';
-	ctx.lineWidth = 0.002923;
+	ctx.lineWidth = adj*0.002923;
 	ctx.moveTo(61.142639, 66.191265);
 	ctx.bezierCurveTo(63.848726, 65.702215, 66.420294, 64.677813, 68.762671, 63.155775);
 	ctx.bezierCurveTo(69.194032, 62.875483, 69.659231, 62.548379, 70.036846, 62.259841);
@@ -417,6 +418,7 @@ function pawna(gsize, width, ctx, x, y, snap){
 }
 
 function pawnb(gsize, width, ctx, x, y, snap){
+	var adj = window.devicePixelRatio*5
 	ctx.resetTransform();
 	if (snap){
 		ctx.transform(((width/gsize)/68.18)*2.5, 0, 0, ((width/gsize)/68.18)*2.5, ((width/gsize)*x)-((width/gsize)/68.18)*4, ((width/gsize)*y)-((width/gsize)/68.18)*3.7)
@@ -434,7 +436,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(153, 153, 153)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.070004;
+	ctx.lineWidth = adj*0.070004;
 	ctx.lineCap = 'butt';
 	ctx.lineJoin = 'miter';
 	ctx.moveTo(34.561380, 242.420410);
@@ -453,7 +455,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(153, 153, 153)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.070004;
+	ctx.lineWidth = adj*0.070004;
 	ctx.moveTo(15.240045, -17.462790);
 	ctx.bezierCurveTo(18.333934, -17.462790, 20.842027, -14.742147, 20.842027, -11.386064);
 	ctx.bezierCurveTo(20.842027, -8.029981, 18.333934, -5.309338, 15.240045, -5.309338);
@@ -467,7 +469,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(153, 153, 153)';
 	ctx.strokeStyle = 'rgb(153, 153, 153)';
-	ctx.lineWidth = 0.008882;
+	ctx.lineWidth = adj*0.008882;
 	ctx.moveTo(5.636244, 26.656825);
 	ctx.bezierCurveTo(5.573144, 25.901175, 5.552144, 23.875895, 5.598644, 23.033405);
 	ctx.bezierCurveTo(5.763134, 20.051186, 6.328224, 17.633856, 7.315764, 15.687986);
@@ -496,7 +498,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 // #path34392-7
 	ctx.beginPath();
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.074253;
+	ctx.lineWidth = adj*0.074253;
 	ctx.lineCap = 'butt';
 	ctx.lineJoin = 'miter';
 	ctx.moveTo(120.299230, 261.086810);
@@ -516,7 +518,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.001758;
+	ctx.lineWidth = adj*0.001758;
 	ctx.miterLimit = 4;
 	ctx.moveTo(10.247684, 8.850146);
 	ctx.bezierCurveTo(10.346084, 8.565146, 10.387894, 8.467436, 10.489724, 8.284846);
@@ -535,7 +537,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.002134;
+	ctx.lineWidth = adj*0.002134;
 	ctx.miterLimit = 4;
 	ctx.moveTo(10.686134, 7.699284);
 	ctx.bezierCurveTo(10.686134, 7.672163, 11.084840, 6.941297, 11.211877, 6.735579);
@@ -557,7 +559,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.beginPath();
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.002270;
+	ctx.lineWidth = adj*0.002270;
 	ctx.miterLimit = 4;
 	ctx.moveTo(14.821160, 10.206236);
 	ctx.lineTo(14.821160, 8.955097);
@@ -576,7 +578,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(12.567673, -11.175187);
 	ctx.bezierCurveTo(12.947854, -11.175187, 13.256052, -10.877617, 13.256052, -10.510545);
@@ -593,7 +595,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.transform(1.000000, 0.000000, 0.000000, -1.000000, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(0, 0, 0)';
 	ctx.strokeStyle = 'rgb(0, 0, 0)';
-	ctx.lineWidth = 0.026458;
+	ctx.lineWidth = adj*0.026458;
 	ctx.miterLimit = 4;
 	ctx.moveTo(18.193405, -11.317643);
 	ctx.bezierCurveTo(18.573586, -11.317643, 18.881784, -11.020073, 18.881784, -10.653001);
@@ -610,7 +612,7 @@ function pawnb(gsize, width, ctx, x, y, snap){
 	ctx.transform(0.264583, 0.000000, 0.000000, 0.264583, 0.000000, 0.000000);
 	ctx.fillStyle = 'rgb(153, 153, 153)';
 	ctx.strokeStyle = 'rgb(153, 153, 153)';
-	ctx.lineWidth = 0.001713;
+	ctx.lineWidth = adj*0.001713;
 	ctx.moveTo(60.870808, 66.236146);
 	ctx.bezierCurveTo(61.567464, 66.117142, 62.189059, 65.982758, 62.799619, 65.819150);
 	ctx.bezierCurveTo(65.409534, 65.119790, 67.848775, 63.917510, 70.058401, 62.241362);

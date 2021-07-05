@@ -6,12 +6,6 @@ body{
 button{
 	cursor: pointer;
 }
-.left{
-	width: 48%;
-}
-.right{
-	width: 48%;
-}
 .modebtn{
 	text-align: center;
 	height: 50px;
@@ -66,7 +60,9 @@ button{
 	line-height: 17.5vh;
 	font-size: 40px;
 	color: white;
-
+}
+.timer_m{
+	display: none;
 }
 #room_wait > div > input[type="radio"]{
 	opacity: 0;
@@ -107,7 +103,6 @@ button{
 #play{
 	height: 80vmin;
 	width:80vmin;
-	float: right;
 	margin-top: 6vh;
 }
 #topmenu{
@@ -129,24 +124,23 @@ button{
 }
 #chat{
 	position:absolute;
-	float: left;
 	width: 80vmin;
 	height: 35vh;
+	background-color: #3b3b3b;
+	border-radius: 10px;
 }
 
 #msg_box{
 	width: 80vmin;
-	height: 27vh;
+	height: 25vh;
 	scroll-behavior: smooth;
 	overflow-y: scroll;
 }
-
 #timer{
 	width: 80vmin;
 	height: 35vh;
 	margin-top: 6vh;
 }
-
 #online_setup{
 	display:none;
 }
@@ -159,6 +153,7 @@ button{
 	display: none;
 	justify-content: center;
 	align-items: center;
+	gap: 30px;
 	flex-direction: column;
 }
 #code_entry{
@@ -176,10 +171,14 @@ button{
 }
 #play_page{
 	display: none;
-	justify-content: space-between;
+	justify-content: center;
 }
-
-
+#board{
+	margin-right: 10px;
+}
+#playing_interface{
+	margin-left: 10px
+}
 #messages {
 	list-style-type: none;
 	margin: 0;
@@ -194,7 +193,7 @@ button{
 	position: absolute;
 	width: 80vmin;
 	display: flex;
-	height: 8vh;
+	height: 7vh;
 	box-sizing: border-box;
 	bottom:0;
 	align-items: center;
@@ -219,7 +218,7 @@ button{
 	display: none;
 	color: red;
 }
-@media (max-width:450px){
+@media only screen and (max-device-width: 480px){
 	.fsmenu{
 		gap: 4vh;
 		font-size: 5.4vw;
@@ -236,9 +235,74 @@ button{
 		height: 15vw;
 		border-radius: 4.5vw;
 	}
+	.timer_m{
+		display: inline-flex;
+		color: white;
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		font-size: 4.5vh;
+	}
+	#board{
+		margin-right: 0px;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+
+	}
+	#timer{
+		display: none;
+	}
 	#room_wait > div> label{
 		font-size: 4.5vw;
 		width: 23vw;
 		height: 12vw;
+		border-radius: 4.5vw;
+	}
+	#cimps{
+		width: 65vw
+	}
+	#cimps > input[type="text"]{
+		border: none;
+		border-radius: 1rem;
+		height: 5vw;
+		width: 18vw;
+	}
+	#code_contain{
+		gap: 4vh;
+	}
+	#code_contain > span{
+		text-align:center
+	}
+	#code{
+		font-size: 6.5vw;
+		color: white;
+		letter-spacing: 4vw;
+	}
+	#play_page{
+		align-items: center;
+		flex-direction: column;
+	}
+	#play{
+		height: 95vmin;
+		width:95vmin;
+		margin-top: 0px;
+	}
+	.sidemenu > button{
+		width: 80%;
+		height: 55%;
+		border-radius: 2rem;
+		font-size: 4.5vw;
+	}
+	#playing_interface{
+		font-size: 4.5vw;
+	}
+	#form{
+		width: 80vmin;
+	}
+	#form > button{
+		font-size: 4.5vw;
+	}
+	#form > input{
+		font-size: 4.5vw;
 	}
 }

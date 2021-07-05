@@ -54,15 +54,15 @@
   			<label for="5min"> 5 min </label>
 			<input type="radio" id="custom" name="time" value="" onclick="customshow()">
   			<label for="custom"> Custom </label>
-  			<span id="cimps">
+  			<input type="radio" id="none" name="time" value="" onclick="customhide()">
+  			<label for="none"> None </label>
+  		</div>
+  		  	<span id="cimps">
 	  			<input type="text" id="min" name="time" value="">
 	  			<span>min</span>
 	  			<input type="text" id="sec" name="time" value="">
 	  			<span>sec</span>
 	  		</span>
-  			<input type="radio" id="none" name="time" value="" onclick="customhide()">
-  			<label for="none"> None </label>
-  		</div>
   		<div>
 			<input type="radio" id="attacker" name="piece" value="b">
   			<label for="attacker"> Attacker </label>
@@ -78,10 +78,12 @@
 	</form>
 
 <div id="play_page">
-	<div id="board" class="left">
+	<div id="board">
+		<div id="time_other_m" class="timer_m"></div>
 		<canvas id="play">Your browser does not support canvas</canvas>
+		<div id="time_me_m" class="timer_m"></div>
 	</div>
-	<div class="right" id="playing_interface">
+	<div id="playing_interface">
 		<div id="timer">
 			<div id="time_other" class="timebit"></div>
 			<div id="time_me" class="timebit"></div>

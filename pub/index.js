@@ -47,8 +47,12 @@ function grid(gridnum, size, con){
 
 	//draw grid
 	con.strokeStyle='black';
-	con.lineWidth=1.5;
-
+	if (window.devicePixelRatio > 2){
+		con.lineWidth=14;
+	}
+	else{
+		con.lineWidth=2;
+	}
 	for(i=0; i <= gridnum; i++){
 		con.beginPath();
 		con.moveTo(0, i*(size/gridnum))
@@ -430,6 +434,8 @@ async function main(gametype, gsize, code, socket, order) {
 		socket.on('timeset', (time) => {
 			document.getElementById("time_me").textContent = timetranslator(time)
 			document.getElementById("time_other").textContent = timetranslator(time)
+			document.getElementById("time_me_m").textContent = timetranslator(time)
+			document.getElementById("time_other_m").textContent = timetranslator(time)
 		})
 
 
@@ -449,9 +455,11 @@ async function main(gametype, gsize, code, socket, order) {
 		socket.on("newtime", (out)=>{
 			if (out.sides[order] == out.flip){
 				document.getElementById("time_me").textContent = timetranslator(out.time)
+				document.getElementById("time_me_m").textContent = timetranslator(out.time)
 			}
 			else{
 				document.getElementById("time_other").textContent = timetranslator(out.time)
+				document.getElementById("time_other_m").textContent = timetranslator(out.time)
 			}
 		})
 
