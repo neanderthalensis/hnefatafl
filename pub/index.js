@@ -14,7 +14,6 @@ function fliper(flip){
 
 function dpidumb(canv){
 	var pxr  = window.devicePixelRatio || 1
-	console.log(canv.getBoundingClientRect())
 	canv.width = canv.getBoundingClientRect().width*pxr
 	canv.height = canv.getBoundingClientRect().height*pxr
 }
@@ -65,22 +64,32 @@ function grid(gridnum, size, con){
 }
 
 function setpieces(type){
-
-	if (type == "bla"){
-		//result of genpieces
+	switch(type){
+		case 7:
+		return[
+		0, 0, 0, 1, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0,
+		0, 0, 0, 2, 0, 0, 0,
+		1, 1, 2, 3, 2, 1, 1,
+		0, 0, 0, 2, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0,
+		0, 0, 0, 1, 0, 0, 0,
+		]
+		
+		case 9:
 		return [
-		 0,  0,  0,  1,  1,  1,  0,  0,  0,
-		 0,  0,  0,  0,  1,  0,  0,  0,  0,
-		 0,  0,  0,  0,  2,  0,  0,  0,  0,
-		 1,  0,  0,  0,  2,  0,  0,  0,  1,
-		 1,  1,  2,  2,  3,  2,  2,  1,  1,
-		 1,  0,  0,  0,  2,  0,  0,  0,  1,
-		 0,  0,  0,  0,  2,  0,  0,  0,  0,
-		 0,  0,  0,  0,  1,  0,  0,  0,  0,
-		 0,  0,  0,  1,  1,  1,  0,  0,  0
+		 0, 0, 0, 1, 1, 1, 0, 0, 0,
+		 0, 0, 0, 0, 1, 0, 0, 0, 0,
+		 0, 0, 0, 0, 2, 0, 0, 0, 0,
+		 1, 0, 0, 0, 2, 0, 0, 0, 1,
+		 1, 1, 2, 2, 3, 2, 2, 1, 1,
+		 1, 0, 0, 0, 2, 0, 0, 0, 1,
+		 0, 0, 0, 0, 2, 0, 0, 0, 0,
+		 0, 0, 0, 0, 1, 0, 0, 0, 0,
+		 0, 0, 0, 1, 1, 1, 0, 0, 0
 		 ]
-	}
-	else if (type == "blo"){
+
+		case 11:
 		return [
 		0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
 		0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
@@ -95,6 +104,7 @@ function setpieces(type){
 		0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0
 		]
 	}
+
 }
 
 
@@ -188,12 +198,20 @@ function edgeinator(gsize, direction){
 
 }
 
+function timetranslator(time){
+	var seconds = (time-Math.floor(time/60)*60)
+		if (seconds < 10){
+			seconds = "0" + seconds
+			}
+	return Math.floor(time/60) + ":" + seconds
+}
+
 function present(pieces, newpos, who, wha, whe, gsize, offset){
 	if(pieces[newpos.pos+offset] == wha){
 		
 		if (offset == 1 || offset == -1){var edge = edgeinator(gsize, offset)}
 		else{var edge = []}
-		if (!(edge.includes(newpos.pos)) && (pieces[newpos.pos+2*offset] == who || pieces[newpos.pos+2*offset] == whe || newpos.pos+2*offset == 0 || newpos.pos+2*offset == (gsize^2)-gsize || newpos.pos+2*offset == Math.floor((gsize**2)/2) || newpos.pos+2*offset == gsize-1 || newpos.pos+2*offset == (gsize**2)-1)){
+		if (!(edge.includes(newpos.pos)) && (pieces[newpos.pos+2*offset] == who || pieces[newpos.pos+2*offset] == whe || newpos.pos+2*offset == 0 || newpos.pos+2*offset == (gsize**2)-gsize || newpos.pos+2*offset == Math.floor((gsize**2)/2) || newpos.pos+2*offset == gsize-1 || newpos.pos+2*offset == (gsize**2)-1)){
 			pieces[newpos.pos+offset] = 0
 		}		
 
@@ -217,12 +235,10 @@ function checkwin(pieces, gsize, flip){
 		var edge = [];
 		if (n == 1 || n == -1){var edge = edgeinator(gsize, n)}
 		else{var edge = []}
-		console.log(edge)
 		if ((pieces[king+n] != 0 && pieces[king+n] != 2) || (king+n == 0 || king+n == gsize-1 || king+n == pieces.length-1 || king+n == pieces.length - gsize || king+n == Math.floor(pieces.length/2) || edge.includes(king))){
 			check++
 		}
 	}
-	console.log("checks:" + check)
 	if (check == 4){
 		console.log("noking")
 		 win = "b"
@@ -276,130 +292,207 @@ function getlegal(pieces, gsize, flip){
 	return legals
 }
 
+async function move(pieces, places, canv, con,gsize, flip){
 
+	return new Promise((resolve, reject) =>{
+		var outer = {};
+		canv.addEventListener('mousedown', async (x) => {
+		var moveout = await new Promise((res, rej) => {
 
-async function move(x, pieces, places, canv, con,gsize, flip){
+		var out = {}
+		var who = 0
 
-	return new Promise((res, rej) => {
+		var mousePos = getmouse(canv, x);
+		var pos = getpos(gsize, mousePos, canv.width)
 
-	var out = ()=>{}
-	var who = 0
+		who = pieces[pos.pos]
 
-	var mousePos = getmouse(canv, x);
-	var pos = getpos(gsize, mousePos, canv.width)
-
-	who = pieces[pos.pos]
-
-	if (who != 0 && ((flip == "b" && who == 1) || (flip == "a" && who > 1))){
-		pieces[pos.pos] = 0}
-	else{
-		out.pieces = pieces
-		out.turn = flip
-		res(out)
-	}
-
-	canv.addEventListener('mousemove', (y) => {
 		if (who != 0 && ((flip == "b" && who == 1) || (flip == "a" && who > 1))){
-
-		mousePos = getmouse(canv, y);
-		grid(gsize, canv.width, con);
-		draw(pieces, places, gsize, canv.width, con);
-		if (who == 1){
-			pawnb(gsize, canv.width, con, mousePos.x, mousePos.y, false);
-		}
-		else if(who == 2){
-			pawna(gsize, canv.width, con, mousePos.x, mousePos.y, false);
-		}
-		else if (who == 3){
-			king(gsize, canv.width, con, mousePos.x, mousePos.y, false);
-		}
-
-	}})
-
-	canv.addEventListener('mouseup', (z) => {
-		if (who != 0 && ((flip == "b" && who == 1) || (flip == "a" && who > 1))){
-		mousePos = getmouse(canv, z);
-		newpos = getpos(gsize, mousePos, canv.width)
-		if(checkmove(pos, newpos, pieces, gsize, who)){
-			pieces[newpos.pos] = who
-			checkcapture(newpos, pieces, gsize, who);
-			grid(gsize, canv.width, con);
-			draw(pieces, places, gsize, canv.width, con);
-			who = 0
-			out.pieces = pieces
-			out.turn = fliper(flip)
-			res(out)
-		}
+			pieces[pos.pos] = 0}
 		else{
-			pieces[pos.pos] = who
-			grid(gsize, canv.width, con);
-			draw(pieces, places, gsize, canv.width, con);
-			who = 0
 			out.pieces = pieces
 			out.turn = flip
 			res(out)
-
 		}
+
+		canv.addEventListener('mousemove', (y) => {
+			if (who != 0 && ((flip == "b" && who == 1) || (flip == "a" && who > 1))){
+
+			mousePos = getmouse(canv, y);
+			grid(gsize, canv.width, con);
+			draw(pieces, places, gsize, canv.width, con);
+			if (who == 1){
+				pawnb(gsize, canv.width, con, mousePos.x, mousePos.y, false);
+			}
+			else if(who == 2){
+				pawna(gsize, canv.width, con, mousePos.x, mousePos.y, false);
+			}
+			else if (who == 3){
+				king(gsize, canv.width, con, mousePos.x, mousePos.y, false);
+			}
+
 	}})
 
-})
+		canv.addEventListener('mouseup', (z) => {
+			if (who != 0 && ((flip == "b" && who == 1) || (flip == "a" && who > 1))){
+			mousePos = getmouse(canv, z);
+			newpos = getpos(gsize, mousePos, canv.width)
+			if(checkmove(pos, newpos, pieces, gsize, who)){
+				pieces[newpos.pos] = who
+				checkcapture(newpos, pieces, gsize, who);
+				grid(gsize, canv.width, con);
+				draw(pieces, places, gsize, canv.width, con);
+				out.turn = fliper(flip)
+			}
+			else{
+				pieces[pos.pos] = who
+				grid(gsize, canv.width, con);
+				draw(pieces, places, gsize, canv.width, con);
+				out.turn = flip					
+			}
+			out.who = who
+			out.pieces = pieces
+			out.pos = pos
+			out.newpos = newpos
+			who = 0
+			res(out)
+	}})
+
+	})
+
+	if (moveout.turn != flip){
+		outer.go = true
+		outer.who = moveout.who
+		outer.pieces = moveout.pieces
+		outer.flip = moveout.turn
+		outer.pos = moveout.pos
+		outer.newpos = moveout.newpos
+	}
+	else{
+		outer.go = false
+	}
+			
+	resolve(outer)
+	}, {once: true})})
+
 }
-
-
-async function main(gametype) {
-	
+async function main(gametype, gsize, code, socket, order) {
 	var pxr  = window.devicePixelRatio || 1
 	var canv = document.getElementById("play");
 	var con = canv.getContext('2d');
 
 	dpidumb(canv)
 
-	var gsize = 11
-
-
 	var places = setplaces(gsize)
-	var pieces = setpieces( "blo")
+	var pieces = setpieces(gsize)
 	
 
 	grid(gsize, canv.width, con)
 	draw(pieces, places, gsize, canv.width, con)
 
+	window.addEventListener('resize', () => {
+		var pxr  = window.devicePixelRatio || 1
+		var canv = document.getElementById("play");
+		var con = canv.getContext('2d');
+		dpidumb(canv)
+		grid(gsize, canv.width, con)
+		draw(pieces, places, gsize, canv.width, con)
+	});
+
 	var flip = "b"
 	var win = 0
-	if (gametype == "local"){
-	while (win == 0){
-	var perturn = await new Promise((res, rej) =>{
-		var out = () => {};
-		canv.addEventListener('mousedown', async (x) => {
-			var moveout = await move(x, pieces, places, canv, con, gsize, flip)
-			if (moveout.turn != flip){
-				out.go = true
-				out.pieces = moveout.pieces
-				out.flip = moveout.turn
-			}
-			else{
-				out.go = false
-				out.pieces = moveout.pieces
-				out.flip = moveout.turn
+	var perturn;
 
+	if (gametype == "local"){
+		while (win == 0){
+			perturn = await move(pieces, places, canv, con, gsize, flip)
+			if (perturn.go){
+				flip = perturn.flip
+				pieces = perturn.pieces
 			}
-			
-			res(out)
-	}, {once: true})})
-	if (perturn.go){
-		flip = perturn.flip
-		pieces = perturn.pieces
-	}
-	win = checkwin(pieces, gsize, flip)
-	console.log(win)
-	}
+		win = checkwin(pieces, gsize, flip)
+	}}
 
 	if(gametype == "online"){
-		chat()
+		socket.emit("ready", code, false)
+
+		var form = document.getElementById('form');
+		var input = document.getElementById('msg_input');
+		  
+		form.addEventListener('submit', function(e) {
+			e.preventDefault();
+		    if (input.value) {
+		    	socket.emit('mes', code, input.value, order);
+		    	input.value = '';
+		    }
+		});
+
+		socket.on('timeset', (time) => {
+			document.getElementById("time_me").textContent = timetranslator(time)
+			document.getElementById("time_other").textContent = timetranslator(time)
+		})
+
+
+		socket.on('mes', (msg) => {
+			var item = document.createElement('li');
+			item.textContent = msg;
+			messages.appendChild(item);
+		});
+
+		socket.on("win", (pcg) => {
+			grid(gsize, canv.width, con)
+			draw(pcg.pieces, places, gsize, canv.width, con)
+			document.getElementById("sidemenu_play").style.display = "none"
+			document.getElementById("sidemenu_over").style.display = "flex"
+		})
+
+		socket.on("newtime", (out)=>{
+			if (out.sides[order] == out.flip){
+				document.getElementById("time_me").textContent = timetranslator(out.time)
+			}
+			else{
+				document.getElementById("time_other").textContent = timetranslator(out.time)
+			}
+		})
+
+		document.getElementById("resign").addEventListener("click", () =>{socket.emit("resignation", code, pieces)})
+
+		document.getElementById("rematch").addEventListener("click", () => {
+			var pieces = setpieces(gsize)
+			grid(gsize, canv.width, con)
+			draw(pieces, places, gsize, canv.width, con)
+			document.getElementById("sidemenu_over").style.display = "none"
+			document.getElementById("sidemenu_play").style.display = "flex"
+			socket.emit("ready", code, true)
+		})
+
 		
+		socket.on("turn", async (pcg) => {
+			pieces = pcg.pieces
+			flip = pcg.flip
+			grid(gsize, canv.width, con)
+			draw(pieces, places, gsize, canv.width, con)
+			
+
+			do{
+				perturn = await move(pieces, places, canv, con, gsize, flip)
+			}
+			while(! perturn.go)
+			
+			socket.emit("gamenum", pcg.gamenum, code, perturn)
+
+		})
+		socket.on("ok", (ok) => {
+			if(ok.ok){
+				perturn = ok.perturn
+				socket.emit("done", code, perturn.pieces, perturn.pos, perturn.newpos, perturn.who)
+			}
+			else{
+				grid(gsize, canv.width, con)
+				draw(ok.pieces, places, gsize, canv.width, con)	
+			}
+		})
+
 	}
+
 }
-}
-
-
-

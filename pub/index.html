@@ -17,8 +17,6 @@
 <div id="topmenu">
 	<button>Play</button>
 	<button>Rules</button>
-	<button>About</button>
-	<button>Login</button>
 </div>
 
 
@@ -31,31 +29,78 @@
 <div id="online_setup" class="fsmenu">
 	<label for="nickname">Please enter a name:</label>
 	<input type="text" id="nickname" class="bigimp">
+	<span id="error">Please enter a name/alias.</span>
 	<button class="modebtn" onclick="createroom()">Create Game</button>
 	
 	<button class="modebtn" onclick="joinroom()">Join Game</button>
 	<input type="text" id="code_entry" class="bigimp">
+	<span id="code_error">Please enter a 6 character code.</span>
 	<button onclick="submitcode()" id="code_submit" class="modebtn">Lets GO!</button>
 </div>
 
-<div id="room_wait" class="fsmenu">
-	Please share this code with your opponent:
-	<span id="code"> </span>
+<form id="room_wait" class="fsmenu">
+		<div>
+			<input type="radio" id="7" name="size" value="7">
+  			<label for="7">7x7</label>
+			<input type="radio" id="9" name="size" value="9" >
+  			<label for="9">9x9</label>
+			<input type="radio" id="11" name="size" value="11" checked="checked">
+  			<label for="11">11x11</label>
+  		</div>
+  		<div>
+			<input type="radio" id="3min" name="time" value=180 onclick="customhide()">
+  			<label for="3min"> 3 min </label>
+			<input type="radio" id="5min" name="time" value=300 onclick="customhide()" checked="checked">
+  			<label for="5min"> 5 min </label>
+			<input type="radio" id="custom" name="time" value="" onclick="customshow()">
+  			<label for="custom"> Custom </label>
+  			<span id="cimps">
+	  			<input type="text" id="min" name="time" value="">
+	  			<span>min</span>
+	  			<input type="text" id="sec" name="time" value="">
+	  			<span>sec</span>
+	  		</span>
+  			<input type="radio" id="none" name="time" value="" onclick="customhide()">
+  			<label for="none"> None </label>
+  		</div>
+  		<div>
+			<input type="radio" id="attacker" name="piece" value="b">
+  			<label for="attacker"> Attacker </label>
+  			<input type="radio" id="defender" name="piece" value="a" checked="checked">
+  			<label for="defender"> Defender </label>
+  		</div>
 	
-</div>
-
-
-<div id = "board" class="left">
-	<canvas id = "play">Your browser does not support canvas</canvas>
-</div>
-<div class="right" id="playing_interface">
-	<div id="timer"></div>
-	<div id="chat">
-		<ul id="messages"></ul>
-   		<form id="form" action="">
-    		<input id="input" autocomplete="off" /><button>Send</button>
-    	</form>
+	<button onclick="makecode()" id="code_make" class="modebtn" type="button">Lets GO!</button>
+	<div id="code_contain">
+		<span>Please share this code with your opponent:</span>
+		<span id="code"> </span>
 	</div>
+	</form>
+
+<div id="play_page">
+	<div id="board" class="left">
+		<canvas id="play">Your browser does not support canvas</canvas>
+	</div>
+	<div class="right" id="playing_interface">
+		<div id="timer">
+			<div id="time_other" class="timebit"></div>
+			<div id="time_me" class="timebit"></div>
+		</div>
+		<div id="sidemenu_play" class="sidemenu">
+			<button id="resign">Resign</button>
+		</div>
+			<div id="sidemenu_over" class="sidemenu">
+			<button id="rematch"> Rematch </button>
+		</div>
+		<div id="chat">
+			<div id="msg_box">
+				<ul id="messages"></ul>
+			</div>
+	   		<form id="form" action="">
+	    		<input id="msg_input" autocomplete="off" /><button>Send</button>
+	    	</form>
+		</div>
+</div>
 </div>
 
 

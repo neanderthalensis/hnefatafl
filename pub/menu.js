@@ -1,8 +1,27 @@
+function setInputFilter(textbox, inputFilter) { //from https://stackoverflow.com/questions/469357/html-text-input-allow-only-numeric-input/469362#469362
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
+    });
+  });
+}
+
 function local(){
-	document.getElementById('board').style.display = "block"
-	document.getElementById('playing_interface').style.display = "block"
+	document.getElementById('play_page').style.display = "flex"
+	document.getElementById('play_page').style.justifyContent = "center"
+	document.getElementById('board').classList.remove("left")
+	document.getElementById('playing_interface').style.display = "none"
 	document.getElementById('mode_selection').style.display = "none"
-	main("local")
+	main("local", 11)
 }
 
 function onlineone(){
@@ -12,41 +31,106 @@ function onlineone(){
 }
 
 function createroom(){
-	var socket = io();
-	document.getElementById('online_setup').style.display = "none"
-	document.getElementById('room_wait').style.display = "flex"
-	socket.emit('newroom', document.getElementById("nickname").value)
-	socket.on('code', (code) => {
-		console.log(code)
-		document.getElementById('code').textContent = code
-	})
-	go(socket)
+	if (document.getElementById("nickname").value == ""){
+		document.getElementById("error").style.display = "block"
+	}
+	else{
+		
+		document.getElementById('online_setup').style.display = "none"
+		document.getElementById('room_wait').style.display = "flex"
+		setInputFilter(document.getElementById("min"), function(value) {
+  			return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 60);
+  		});
+  		setInputFilter(document.getElementById("sec"), function(value) {
+  			return /^\d*$/.test(value) && (value === "" || parseInt(value) <= 60);
+  		});
+
+	}
+
 }
 
 function joinroom(){
-	document.getElementById('code_submit').style.display = "block"
-	document.getElementById('code_entry').style.display = "block"
-	document.getElementById('code').style.display = "none"
+	if (document.getElementById("nickname").value == ""){
+		document.getElementById("error").style.display = "block"
+	}
+	else{
+		document.getElementById('code_submit').style.display = "block"
+		document.getElementById('code_entry').style.display = "block"
+	}
 }
-function submitcode(){
+
+function customshow(){
+	document.getElementById("cimps").style.display = "inline-flex"
+}
+function customhide(){
+	document.getElementById("cimps").style.display = "none"
+}
+
+function makecode(){
 	var socket = io();
-	socket.emit('join', document.getElementById("code_entry").value, document.getElementById("nickname").value)
-	go(socket)
+	var sets = ["size", "time", "piece"];
+	var opts = [];
+
+	document.getElementById("custom").value = document.getElementById("min").value*60 + document.getElementById("sec").value*1
+
+	for(n of sets){
+		for(m of document.querySelectorAll('input[name='+n+']')){
+			if(m.checked){
+				opts.push(m.value)
+			}
+		}
+	}
+	opts.push(document.getElementById("nickname").value)
+	socket.emit('newroom', opts)
+	socket.on('code', (code) => {
+		document.getElementById('code_make').style.display = "none"
+		document.getElementById('code_contain').style.display = "flex"
+		document.getElementById('code').textContent = code
+	})
+	go(socket,0)
+}
+async function submitcode(){
+	if(document.getElementById("code_entry").value.length == 6){
+		if(document.getElementById("nickname").value != ""){
+			var socket = io();
+			var code = document.getElementById("code_entry").value
+
+			var check = await new Promise((res, rej) => {
+				socket.emit("things", code)
+				socket.on("things", (ans) => {res(ans)})
+			})
+
+			if(check){
+				socket.emit('join', code, document.getElementById("nickname").value)
+				go(socket, 1)
+			}
+			else{
+				document.getElementById("code_error").textContent = "Sorry, could not find a game with this code."
+				document.getElementById("code_error").style.display = "block"
+			}
+		}
+		else{document.getElementById("error").style.display = "block"}
+	}
+	else{
+		document.getElementById("code_error").textContent = "Please enter a 6 character code."
+		document.getElementById("code_error").style.display = "block"
+	}
 }
 
 function computer(){
 	alert("Not yet possible, please find a friend to play with.")
 }
 
-function go(socket){
-	socket.on('gogo', () => {
-		console.log("hihi")
+function go(socket, order){
+	socket.on('gogo', (stuff) => {
 		document.getElementById('online_setup').style.display = "none"
 		document.getElementById('room_wait').style.display = "none"
-		document.getElementById('board').style.display = "block"
+		document.getElementById('play_page').style.display = "flex"
 		document.getElementById('playing_interface').style.display = "block"
 		document.getElementById('mode_selection').style.display = "none"
-		main("local")
+		console.log(stuff)
+		main("online", stuff.gsize ,stuff.code, socket, order)
 	})
 
 }
+
