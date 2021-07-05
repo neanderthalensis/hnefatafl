@@ -219,3 +219,26 @@ button{
 	display: none;
 	color: red;
 }
+@media (max-width:450px){
+	.fsmenu{
+		gap: 4vh;
+		font-size: 5.4vw;
+	}
+	.modebtn{
+		width: 70vw;
+		height: 15vw;
+		border-radius: 4.5vw;
+		font-size: 5.4vw
+	}
+	.bigimp{
+		font-size: 5.4vw;
+		width: 70vw;
+		height: 15vw;
+		border-radius: 4.5vw;
+	}
+	#room_wait > div> label{
+		font-size: 4.5vw;
+		width: 23vw;
+		height: 12vw;
+	}
+}
