@@ -229,6 +229,9 @@ button{
 		border-radius: 4.5vw;
 		font-size: 5.4vw
 	}
+	.modebtn:hover{
+		width: 70vw;
+	}
 	.bigimp{
 		font-size: 5.4vw;
 		width: 70vw;
