@@ -218,7 +218,19 @@ button{
 	display: none;
 	color: red;
 }
+#rules{
+	width: 80vw;
+	color: white;
+	text-align: left;
+	margin-top: 5vh;
+	margin-left: 10vw;
+	font-size: 18px;
+}
 @media only screen and (max-device-width: 480px){
+	#topmenu > button{
+		width: 49%;
+		font-size: 3vh;
+	}
 	.fsmenu{
 		gap: 4vh;
 		font-size: 5.4vw;
@@ -307,5 +319,8 @@ button{
 	}
 	#form > input{
 		font-size: 4.5vw;
+	}
+	#rules{
+		font-size: 26px;
 	}
 }
