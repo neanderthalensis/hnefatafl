@@ -420,27 +420,7 @@ async function main(gametype, gsize, code, socket, order) {
 		win = checkwin(pieces, gsize, flip)
 	}}
 
-	if (gametype == "computer"){
-		while (win == 0){
-			perturn = await move(pieces, places, canv, con, gsize, flip)
 
-			var depth = 3
-
-
-
-			for (i=0; i < depth; i++){
-				var legals = await getlegal(pieces, gsize, flip)
-				
-			}
-
-
-
-			if (perturn.go){
-				flip = perturn.flip
-				pieces = perturn.pieces
-			}
-		win = checkwin(pieces, gsize, flip)
-	}
 
 	if(gametype == "online"){
 		socket.emit("ready", code, false)
