@@ -248,9 +248,7 @@ button{
 	#msg_box{
 		width: 40vmax;
 	}
-	body{
-		background-color: red;
-	}
+
 @media only screen and (max-device-width: 480px){
 	#topmenu > button{
 		width: 49%;
