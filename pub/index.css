@@ -54,8 +54,8 @@ button{
 	border-radius: 2rem
 }
 .timebit{
-	width: 80vmin;
-	height: 17.5vh;
+	width: 100%;
+	height: 50%;
 	vertical-align: middle;
 	line-height: 17.5vh;
 	font-size: 40px;
@@ -129,9 +129,11 @@ button{
 	background-color: #3b3b3b;
 	border-radius: 10px;
 }
-
-#msg_box{
+#form{
 	width: 80vmin;
+}
+#msg_box{
+	width: 100%;
 	height: 25vh;
 	scroll-behavior: smooth;
 	overflow-y: scroll;
@@ -235,20 +237,22 @@ button{
 	}
 	#timer{
 		width: 40vmax;
+		height: 15vw;
 	}
 	#chat{
 		width: 40vmax;
-	}
-	.sidemenu{
-		width: 40vmax;
+		height: 20vw;
 	}
 	#form{
 		width: 40vmax;
 	}
-	#msg_box{
+	.sidemenu{
 		width: 40vmax;
+		height: 5vw;
 	}
-
+	.timebit{
+		font-size: 7.3vh;
+	}
 @media only screen and (max-device-width: 480px){
 	#topmenu > button{
 		width: 49%;
@@ -333,9 +337,6 @@ button{
 	}
 	#playing_interface{
 		font-size: 4.5vw;
-	}
-	#form{
-		width: 80vmin;
 	}
 	#form > button{
 		font-size: 4.5vw;
