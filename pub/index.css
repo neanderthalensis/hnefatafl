@@ -226,6 +226,31 @@ button{
 	margin-left: 10vw;
 	font-size: 18px;
 }
+
+
+@media only screen and (max-aspect-ratio: 7/4){
+	#play{
+		height: 40vmax;
+		width: 40vmax;
+	}
+	#timer{
+		width: 40vmax;
+	}
+	#chat{
+		width: 40vmax;
+	}
+	.sidemenu{
+		width: 40vmax;
+	}
+	#form{
+		width: 40vmax;
+	}
+	#msg_box{
+		width: 40vmax;
+	}
+	body{
+		background-color: red;
+	}
 @media only screen and (max-device-width: 480px){
 	#topmenu > button{
 		width: 49%;
@@ -323,4 +348,5 @@ button{
 	#rules{
 		font-size: 26px;
 	}
+}
 }
