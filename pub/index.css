@@ -258,9 +258,17 @@ button{
 		width: 49%;
 		font-size: 3vh;
 	}
+	.sidemenu{
+		width: 80vmin;
+		height: 10vh;
+	}
 	.fsmenu{
 		gap: 4vh;
 		font-size: 5.4vw;
+	}
+	#chat{
+		width: 80vmin;
+		height: 35vh;
 	}
 	.modebtn{
 		width: 70vw;
