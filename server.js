@@ -155,7 +155,13 @@ io.on('connection', (socket) => {
 
   	socket.on('things', (code) => {
 
-  		socket.emit('things', (!(rooms[code] == undefined) & rooms[code].sockets.length < 2))
+      if (!(rooms[code] == undefined)){
+            socket.emit('things', (rooms[code].sockets.length < 2))
+      }
+      else{
+        socket.emit('things', false)
+        console.log("IT HAPPENED AGAIN!")
+      }
 
   	});
   	socket.on('done', (code, pieces, pos, newpos, who) => {
